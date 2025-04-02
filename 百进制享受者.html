@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .clock-container {
+            text-align: center;
+            padding: 40px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .custom-clock {
+            font-size: 64px;
+            color: #333;
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+        
+        .real-time {
+            color: #666;
+            font-size: 18px;
+        }
+        
+        .colon {
+            opacity: 0.8;
+        }
+        
+        .ampm {
+            font-size: 24px;
+            margin-left: 8px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock-container">
+        <div class="custom-clock" id="custom-time"></div>
+        <div class="real-time" id="real-time"></div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            
+            // 获取现实时间
+            let realHours = now.getHours();
+            const ampm = realHours >= 12 ? 'PM' : 'AM';
+            realHours = realHours % 12 || 12; // 转换为12小时制
+            const realMinutes = now.getMinutes();
+            const realSeconds = now.getSeconds();
+            const realMilliseconds = now.getMilliseconds();
+            
+            // 计算自定义时间
+            // 小时同步现实时间
+            let customHours = realHours;
+            // 分钟 = 现实分钟/0.6
+            const customMinutes = Math.floor(realMinutes / 0.6);
+            // 秒钟 = 现实秒钟/0.6
+            const customSeconds = Math.floor(realSeconds / 0.6);
+            // 毫秒级处理
+            const totalProgress = (realSeconds + realMilliseconds/1000) / 0.6;
+            const smoothSeconds = Math.floor(totalProgress % 100);
+            
+            // 更新时间显示
+            document.getElementById('custom-time').innerHTML = 
+                `${customHours}<span class="colon">:</span>${customMinutes.toString().padStart(2, '0')}<span class="colon">:</span>${smoothSeconds.toString().padStart(2, '0')}<span class="ampm">${ampm}</span>`;
+            
+            // 显示实际时间作为参考
+            document.getElementById('real-time').innerHTML = 
+                `实际时间: ${realHours}:${realMinutes.toString().padStart(2, '0')}:${realSeconds.toString().padStart(2, '0')} ${ampm}`;
+            
+            // 每0.1秒刷新一次
+            setTimeout(updateClock, 100);
+        }
+        
+        updateClock();
+    </script>
+</body>
+</html>
