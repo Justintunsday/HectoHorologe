@@ -19,6 +19,6 @@
 
 ### Desktop (Example)  
 ```bash
-git clone https://github.com/your-repo/base100-clock.git  
+git clone https://github.com/Justintunsday/HectoHorologe.git 
 cd base100-clock  
 npm install && npm start
