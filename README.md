@@ -8,17 +8,17 @@
 ---
 
 ## ✨ Features  
-- **Base-100 time display**: `1.00` to `100.00` (e.g., `50.00` = solar noon).  
+- **Base-100 time display**: `1.00` to `100.00`.  
 - **Dual-mode**: Toggle between Base-100 and traditional 24-hour formats.  
-- **Precision**: Tracks time down to 0.01 centidays (~8.64 seconds).  
-- **Cross-platform**: Runs on desktop/mobile (specify if web/app/hardware).  
-- **Customizable**: Modify colors, fonts, and logic (if open-source).  
+- **Precision**: Tracks time down to 0.01 centidays.  
+- **Cross-platform**: Runs on desktop/mobile.  
+- **Customizable**: Modify colors, fonts, and logic.  
 
 ---
 
 ## 🛠️ Setup  
 
-### Desktop (Example)  
+### Desktop  
 ```bash
 git clone https://github.com/Justintunsday/HectoHorologe.git 
 cd base100-clock  
