@@ -1,7 +1,7 @@
 # 🕰️ Base-100 Clock 
 
 **Time, simplified.** A decimal-inspired clock that divides each day into 100 "centidays" (1 centiday = 14.4 minutes), offering an intuitive alternative to the 24-hour system.  
-<a href="Base_100_Clock.html" target="_blank">View demo</a>
+<a href="http://154.21.200.21/Base_100_Clock.html" target="_blank">View demo</a>
 
 ![Demo Screenshot](demo.png) *(Replace with actual screenshot)*  
 
