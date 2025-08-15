@@ -1,0 +1,183 @@
+:root {
+    --primary-color: #2c54c9;
+    --secondary-color: #f8f9fa;
+    --text-color: #2c3e50;
+    --light-text: #7f8c8d;
+    --white: #fff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --border-radius: 50px;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --clock-bg: #fff;
+    --body-bg: #f8f9fa;
+    --footer-text: #7f8c8d;
+}
+
+body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background-color: var(--body-bg);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: var(--transition);
+    position: relative;
+    padding-bottom: 80px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    animation: fadeIn 1s ease-out;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    animation: slideDown 0.8s ease-out;
+}
+
+.clock-container {
+    background-color: var(--clock-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    animation: pulse 2s infinite alternate;
+}
+
+.clock-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.clock-label {
+    font-size: 1.2rem;
+    color: var(--light-text);
+    width: 80px;
+    text-align: right;
+    transition: var(--transition);
+}
+
+.clock-display {
+    font-size: clamp(2rem, 6vw, 3rem);
+    color: var(--primary-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.clock-digit {
+    display: inline-block;
+    transition: transform 0.3s ease-out;
+    width: 1.2em;
+    text-align: center;
+    position: relative;
+}
+
+.colon {
+    opacity: 0.6;
+    animation: blink 2s infinite;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    color: var(--footer-text);
+    font-size: 0.9rem;
+    animation: fadeIn 2s ease-out;
+}
+
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: var(--white);
+    color: var(--primary-color);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    z-index: 100;
+    transition: var(--transition);
+}
+
+.back-button:hover {
+    transform: scale(1.1);
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* 动画关键帧 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { 
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.01); }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-5px); }
+}
+
+@keyframes digitFlip {
+    0% { transform: rotateX(0deg); }
+    50% { transform: rotateX(90deg); }
+    100% { transform: rotateX(0deg); }
+}
+
+@media (min-width: 768px) {
+    .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+    
+    .back-button:hover {
+        transform: translateX(-5px) scale(1.1);
+    }
+}
